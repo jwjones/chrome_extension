@@ -1,5 +1,3 @@
-const jsonResponse = "json";
-
 // Cached DOM elements
 /**
  * Call the document.getElementById one time and cache the element for further use
@@ -24,6 +22,9 @@ const updateStatus = (message, error = false) => {
   statusElement.hidden = false;
 };
 
+// Response
+const jsonResponse = "json";
+
 // Project
 /**
  * Project URL for the extension
@@ -34,13 +35,13 @@ const projectURL = "https://jira.secondlife.com/rest/api/2/project/SUN";
  * Validates the project exists.
  * @return {boolean} the validation object that contains errors and if the form is valid
  */
-async function checkProjectExists() {
+const checkProjectExists = async () => {
   try {
     return await make_request(projectURL, jsonResponse);
   } catch (errorMessage) {
     return false;
   }
-}
+};
 
 // Query
 /**
@@ -233,7 +234,7 @@ const buildResultsTable = (items, queryName, queryType) => {
  * @return {string} parsed text content
  */
 export const domify = str => {
-  var dom = new DOMParser().parseFromString(
+  let dom = new DOMParser().parseFromString(
     "<!doctype html><body>" + str,
     "text/html"
   );
