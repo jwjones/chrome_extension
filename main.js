@@ -320,4 +320,4 @@ const handleError = (json, status) => {
   updateStatus(message, true);
 };
 
-document.addEventListener("DOMContentLoaded", handleContentLoaded());
+document.addEventListener("DOMContentLoaded", handleContentLoaded);
